@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Diario del Explorador — Baden-Powell</title>
+<style>
+ body{font-family: 'Georgia', serif; background:#f6f0e3; color:#2b2b2b; padding:30px}
+ .paper{max-width:760px;margin:0 auto;padding:28px;border:2px solid #c9bfae;background:rgba(255,255,240,0.9);box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+ h1{font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif}
+ .hint{margin-top:18px;padding:10px;border-left:4px solid #a67c00;background:#fff9e6}
+ a.button{display:inline-block;margin-top:14px;padding:8px 12px;background:#6b8e23;color:white;text-decoration:none;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="paper">
+  <h1>Diario del Viejo Explorador</h1>
+  <p><em>«Si llegas a este pasaje, querido lector, te doy la bienvenida.»</em></p>
+  <p>Este diario fue escrito por un joven que un día decidió explorar los parajes de la granja. Firmaba como <strong>Baden-Powell</strong>, y dejó pequeñas notas para los curiosos.</p>
+
+  <p><strong>Nota:</strong> Mi brújula se perdió junto al lugar donde los jóvenes suelen jugar. Quien la encuentre, encontrará la siguiente pista.</p>
+
+  <div class="hint">
+    <p><strong>Consejo del viejo explorador:</strong> guarda esta palabra; te será útil cuando te toque hablar con el presente.</p>
+    <p style="font-weight:bold">— Recuerda: la palabra clave es algo que crece y respira. —</p>
+  </div>
+
+  <p>Si quieres seguir, pulsa <a class="button" id="seguir">Ir al archivo del sucesor</a></p>
+
+  <p style="margin-top:12px;font-size:13px;color:#444">(Si eres curioso e inspeccionas el código de esta página, quizás encuentres algo escondido.)</p>
+
+</div>
+
+<script>
+// Comentario oculto con la palabra clave
+// <!-- Palabra clave: BOSQUE -->
+
+document.getElementById('seguir').addEventListener('click', function(){
+  window.location.href = 'https://legado-aldebaran.github.io/archivo.html';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Transmisión Interceptada — Sistema Legado</title>
+<style>
+  body{background:#05060a;color:#cfe8ff;font-family:monospace;padding:28px}
+  .screen{max-width:900px;margin:0 auto;background:#071126;padding:20px;border-radius:6px;border:1px solid #08304a}
+  .line{margin:8px 0}
+  input{padding:8px;width:60%}
+  button{padding:8px}
+  .hint{margin-top:12px;color:#9ee0a8}
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="line">> ACCESO: SISTEMA LEGADO</div>
+  <div class="line">> ESTADO: BLOQUEADO</div>
+  <div class="line">> Introduce la clave para continuar:</div>
+  <input id="k" placeholder="clave">
+  <button id="b">ENVIAR</button>
+
+  <div id="out" class="hint" style="display:none"></div>
+  <div id="success" style="display:none;margin-top:12px;background:#081a0c;padding:10px;border-radius:4px">
+    <p><strong>Acceso permitido.</strong></p>
+    <p>El legado se menciona siempre con una palabra. Buscad donde la naturaleza y la amistad se cruzan: <em>un banco bajo un árbol junto a la mesa de picnic</em>.</p>
+    <p>Allí encontraréis un cofre con la última prueba. La contraseña final es la palabra que ha guiado todo este camino.</p>
+  </div>
+</div>
+
+<script>
+document.getElementById('b').addEventListener('click', function(){
+  var k = document.getElementById('k').value.trim().toUpperCase();
+  if(k === 'BOSQUE'){
+    document.getElementById('success').style.display='block';
+  } else {
+    var o = document.getElementById('out');
+    o.style.display='block';
+    o.textContent = '> ERROR: clave incorrecta. ¡Tienes la pañoleta mal hecha!';
+  }
+});
+</script>
+</body>
+</html>

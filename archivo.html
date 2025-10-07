@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Archivo del Sucesor</title>
+<style>
+  body{font-family:Arial, Helvetica, sans-serif;background:#fff;padding:28px;color:#222}
+  .card{max-width:760px;margin:0 auto;padding:20px;border:1px solid #ddd;border-radius:6px}
+  input, button{padding:8px;margin-top:8px}
+  .secret{display:none;margin-top:12px;padding:10px;background:#eef}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>Archivos de la expedición</h2>
+  <p>Al parecer, alguien intentó dejar un registro digital con pistas. El texto antiguo fue modificado y cifrado para despistar.</p>
+
+  <p>En algunos pasajes aparece una secuencia: <code>O B F H R</code></p>
+  <p>Si no tenéis idea, probad a usar la misma técnica que usan los exploradores para 'girar' palabras.</p>
+
+  <p>Introduce la <strong>palabra clave</strong> que encontraste en el diario para desbloquear la siguiente transmisión:</p>
+  <input id="pwd" placeholder="introduce palabra clave aquí">
+  <button id="check">Comprobar</button>
+
+  <div id="ok" class="secret">
+    <h3>Transmisión desbloqueada</h3>
+    <p>Buen trabajo. Id al lugar donde todos jugáis al balón. Allí, alguien dejó una señal moderna con información importante.</p>
+    <p>Pista extra: el mensaje moderno necesita ser <em>descargado</em> con vuestro teléfono.</p>
+  </div>
+
+  <p style="margin-top:14px;font-size:13px;color:#666">(Sugerencia: la secuencia OBFHR es ROT13 de 'BOSUE' — un ejemplo de cifrado rot13)</p>
+</div>
+
+<script>
+document.getElementById('check').addEventListener('click', function(){
+  var v = document.getElementById('pwd').value.trim().toUpperCase();
+  if(v === 'BOSQUE'){
+    document.getElementById('ok').style.display='block';
+  } else {
+    alert('Contraseña incorrecta. ¡Tienes la pañoleta mal hecha!');
+  }
+});
+</script>
+</body>
+</html>
