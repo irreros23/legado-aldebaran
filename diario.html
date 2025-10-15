@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Diario del Viejo Explorador</title>
   <style>
     /* Diario Definitivo Inmersivo */
     body {
       margin: 0;
       padding: 0;
-      background-color: #f0e6d6; /* fondo de página similar a papel antiguo */
+      background-color: #f0e6d6;
     }
 
     .diario-viejo-explorador {
@@ -27,7 +27,6 @@
       overflow: hidden;
     }
 
-    /* Bordes desgastados y rasgaduras */
     .diario-viejo-explorador::before,
     .diario-viejo-explorador::after {
       content: "";
@@ -41,7 +40,6 @@
     .diario-viejo-explorador::before { top: 0; }
     .diario-viejo-explorador::after { bottom: 0; }
 
-    /* Título estilo manuscrito */
     .diario-viejo-explorador h2 {
       text-align: center;
       font-family: 'Lucida Handwriting', 'Cursive', 'Georgia', serif;
@@ -51,7 +49,6 @@
       text-shadow: 1px 1px 0 #f5f0e0;
     }
 
-    /* Entradas */
     .diario-viejo-explorador .entrada {
       margin-bottom: 35px;
       padding-left: 20px;
@@ -59,7 +56,6 @@
       position: relative;
     }
 
-    /* “Manchas de tinta” decorativas */
     .diario-viejo-explorador .entrada::after {
       content: "";
       position: absolute;
@@ -71,7 +67,6 @@
       left: -10px;
     }
 
-    /* Titulos de entradas */
     .diario-viejo-explorador .entrada h3 {
       font-family: 'Lucida Handwriting', 'Cursive', 'Georgia', serif;
       font-size: 1.5em;
@@ -79,13 +74,11 @@
       color: #3d3328;
     }
 
-    /* Párrafos */
     .diario-viejo-explorador .entrada p {
       font-size: 1em;
       text-align: justify;
     }
 
-    /* Última entrada especial */
     .diario-viejo-explorador .entrada.final {
       border-left: 4px dashed #cbb79c;
       font-style: italic;
@@ -118,10 +111,12 @@
 
     <article class="entrada final">
       <h3>Nota del explorador</h3>
-      <p>«Si llegas a este pasaje, querido lector, te doy la bienvenida.»</p>
-      <p>Este diario fue escrito por un joven que un día decidió explorar los parajes de la granja. Firmaba como Baden-Powell, y dejó pequeñas notas para los curiosos.</p>
-      <p><strong>Nota:</strong> Mi brújula se perdió junto al lugar donde los jóvenes suelen jugar. Quien la encuentre, encontrará la siguiente pista.</p>
+      <p>Inspecciona la página para encontrar la contraseña de la siguiente pista.</p>
+      <p>Guarda la palabra clave, suerte encontrando la siguiente pista, QUE APROVECHE!</p>
     </article>
+
+    <!-- Mensaje oculto solo visible inspeccionando -->
+    <!-- solo quien conoce el BOSQUE sabrá continuar -->
   </section>
 </body>
 </html>
