@@ -1,42 +1,127 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Diario del Explorador — Baden-Powell</title>
-<style>
- body{font-family: 'Georgia', serif; background:#f6f0e3; color:#2b2b2b; padding:30px}
- .paper{max-width:760px;margin:0 auto;padding:28px;border:2px solid #c9bfae;background:rgba(255,255,240,0.9);box-shadow:0 6px 18px rgba(0,0,0,0.08)}
- h1{font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif}
- .hint{margin-top:18px;padding:10px;border-left:4px solid #a67c00;background:#fff9e6}
- a.button{display:inline-block;margin-top:14px;padding:8px 12px;background:#6b8e23;color:white;text-decoration:none;border-radius:6px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario del Viejo Explorador</title>
+  <style>
+    /* Diario Definitivo Inmersivo */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0e6d6; /* fondo de página similar a papel antiguo */
+    }
+
+    .diario-viejo-explorador {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 50px 40px;
+      background-color: #fdf5e6;
+      border: 2px solid #cbb79c;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      font-family: 'Georgia', 'Garamond', serif;
+      line-height: 1.7;
+      color: #4a3f35;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Bordes desgastados y rasgaduras */
+    .diario-viejo-explorador::before,
+    .diario-viejo-explorador::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.08) 10%, rgba(0,0,0,0.08) 90%, transparent 100%);
+      left: 0;
+      z-index: 2;
+    }
+    .diario-viejo-explorador::before { top: 0; }
+    .diario-viejo-explorador::after { bottom: 0; }
+
+    /* Título estilo manuscrito */
+    .diario-viejo-explorador h2 {
+      text-align: center;
+      font-family: 'Lucida Handwriting', 'Cursive', 'Georgia', serif;
+      font-size: 2.4em;
+      margin-bottom: 40px;
+      color: #3d3328;
+      text-shadow: 1px 1px 0 #f5f0e0;
+    }
+
+    /* Entradas */
+    .diario-viejo-explorador .entrada {
+      margin-bottom: 35px;
+      padding-left: 20px;
+      border-left: 4px solid #cbb79c;
+      position: relative;
+    }
+
+    /* “Manchas de tinta” decorativas */
+    .diario-viejo-explorador .entrada::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: rgba(0,0,0,0.03);
+      border-radius: 50%;
+      top: 15px;
+      left: -10px;
+    }
+
+    /* Titulos de entradas */
+    .diario-viejo-explorador .entrada h3 {
+      font-family: 'Lucida Handwriting', 'Cursive', 'Georgia', serif;
+      font-size: 1.5em;
+      margin-bottom: 12px;
+      color: #3d3328;
+    }
+
+    /* Párrafos */
+    .diario-viejo-explorador .entrada p {
+      font-size: 1em;
+      text-align: justify;
+    }
+
+    /* Última entrada especial */
+    .diario-viejo-explorador .entrada.final {
+      border-left: 4px dashed #cbb79c;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
-<div class="paper">
-  <h1>Diario del Viejo Explorador</h1>
-  <p><em>«Si llegas a este pasaje, querido lector, te doy la bienvenida.»</em></p>
-  <p>Este diario fue escrito por un joven que un día decidió explorar los parajes de la granja. Firmaba como <strong>Baden-Powell</strong>, y dejó pequeñas notas para los curiosos.</p>
+  <section class="diario-viejo-explorador">
+    <h2>Diario del Viejo Explorador</h2>
 
-  <p><strong>Nota:</strong> Mi brújula se perdió junto al lugar donde los jóvenes suelen jugar. Quien la encuentre, encontrará la siguiente pista.</p>
+    <article class="entrada">
+      <h3>Entrada 1</h3>
+      <p>Hoy desperté con el canto de los pájaros, y por un instante todo parecía detenerse. Caminé despacio por el sendero, respirando el aire fresco, y me sorprendí pensando en cómo cada pequeño detalle de la naturaleza guarda una lección. Los árboles nos enseñan paciencia; los ríos, perseverancia; y el cielo, humildad. Me pregunto si los muchachos que guío sienten lo mismo cuando se detienen a observar, aunque sea por un momento, la belleza que nos rodea.</p>
+    </article>
 
-  <div class="hint">
-    <p><strong>Consejo del viejo explorador:</strong> guarda esta palabra; te será útil cuando te toque hablar con el presente.</p>
-    <p style="font-weight:bold">— Recuerda: la palabra clave es algo que crece y respira. —</p>
-  </div>
+    <article class="entrada">
+      <h3>Entrada 2</h3>
+      <p>Mientras revisaba los mapas de la próxima excursión, recordé la importancia de la preparación y la previsión. No se trata solo de planificar rutas, sino de anticipar desafíos, cuidar a quienes dependen de nosotros y aprender de cada tropiezo. Cada error, cada dificultad, es una lección disfrazada. Mañana, cuando emprendamos el camino, procuraré que los muchachos vean que el valor no es la ausencia de miedo, sino la decisión de seguir adelante pese a él.</p>
+    </article>
 
-  <p>Si quieres seguir, pulsa <a class="button" id="seguir">Ir al archivo del sucesor</a></p>
+    <article class="entrada">
+      <h3>Entrada 3</h3>
+      <p>Hoy compartimos historias alrededor del fuego, y sentí la calidez de la camaradería más que la del propio fuego. Es curioso cómo los pequeños gestos, la ayuda silenciosa y la palabra oportuna, construyen vínculos que duran toda la vida. Me pregunto si los hombres recuerdan más los desafíos enfrentados o las manos amigas que les ayudaron a superarlos. Creo firmemente que ambos se entrelazan, formando la esencia de la verdadera aventura.</p>
+    </article>
 
-  <p style="margin-top:12px;font-size:13px;color:#444">(Si eres curioso e inspeccionas el código de esta página, quizás encuentres algo escondido.)</p>
+    <article class="entrada">
+      <h3>Entrada 4</h3>
+      <p>Antes de dormir, contemplé las estrellas y pensé en los senderos recorridos y en los que aún quedan por explorar. Cada jornada deja su rastro en nosotros, y cada paso nos enseña algo nuevo. Espero que los muchachos aprendan que la naturaleza es paciente, pero también sabia; que la amistad verdadera se cultiva con respeto y esfuerzo; y que la mejor aventura es aquella que nos permite descubrir lo mejor de nosotros mismos.</p>
+    </article>
 
-</div>
-
-<script>
-// Comentario oculto con la palabra clave
-// <!-- Palabra clave: BOSQUE -->
-
-document.getElementById('seguir').addEventListener('click', function(){
-  window.location.href = 'https://legado-aldebaran.github.io/archivo.html';
-});
-</script>
+    <article class="entrada final">
+      <h3>Nota del explorador</h3>
+      <p>«Si llegas a este pasaje, querido lector, te doy la bienvenida.»</p>
+      <p>Este diario fue escrito por un joven que un día decidió explorar los parajes de la granja. Firmaba como Baden-Powell, y dejó pequeñas notas para los curiosos.</p>
+      <p><strong>Nota:</strong> Mi brújula se perdió junto al lugar donde los jóvenes suelen jugar. Quien la encuentre, encontrará la siguiente pista.</p>
+    </article>
+  </section>
 </body>
 </html>
