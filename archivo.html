@@ -1,45 +1,278 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Archivo del Sucesor</title>
-<style>
-  body{font-family:Arial, Helvetica, sans-serif;background:#fff;padding:28px;color:#222}
-  .card{max-width:760px;margin:0 auto;padding:20px;border:1px solid #ddd;border-radius:6px}
-  input, button{padding:8px;margin-top:8px}
-  .secret{display:none;margin-top:12px;padding:10px;background:#eef}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Archivos de la Expedición</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#7dd3fc;
+      --muted:#9aa4b2;
+      --success:#a7f3d0;
+      --danger:#fda4af;
+    }
+    /* Reset y tipografía */
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #071021 100%);
+      color:#e6eef6;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+
+    /* Contenedor principal */
+    .container{
+      width:100%;
+      max-width:880px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius:14px;
+      padding:34px;
+      box-shadow: 0 10px 40px rgba(2,6,23,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    header{
+      display:flex;
+      align-items:baseline;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      background: linear-gradient(135deg, rgba(125,211,252,0.15), rgba(167,243,208,0.06));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:var(--accent);
+      font-size:20px;
+      border:1px solid rgba(125,211,252,0.12);
+    }
+
+    h1{
+      margin:0;
+      font-size:1.6rem;
+      color:var(--accent);
+      letter-spacing:0.4px;
+    }
+
+    .meta{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      margin-top:20px;
+    }
+
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border-radius:10px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    /* Texto de archivo/relleno */
+    .archivo p{
+      margin:0 0 12px 0;
+      color:#dfe9f5;
+      line-height:1.6;
+    }
+    .archivo .muted{
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+
+    /* Formulario de desbloqueo */
+    form {
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    label{
+      font-size:0.95rem;
+      color:var(--muted);
+    }
+    input[type="password"]{
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.02);
+      color: #e9f6ff;
+      font-size:1rem;
+      outline:none;
+      transition: box-shadow .18s ease, transform .12s ease;
+      caret-color: var(--accent);
+      width:100%;
+    }
+    input[type="password"]:focus{
+      box-shadow: 0 6px 20px rgba(125,211,252,0.08);
+      transform: translateY(-1px);
+      border-color: rgba(125,211,252,0.28);
+    }
+    .actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:6px;
+    }
+    button.primary{
+      padding:10px 14px;
+      border-radius:10px;
+      background: linear-gradient(90deg,var(--accent), #60a5fa);
+      color:#06202a;
+      font-weight:700;
+      border:none;
+      cursor:pointer;
+      box-shadow: 0 8px 24px rgba(96,165,250,0.12);
+    }
+    button.primary:active{transform:translateY(1px)}
+    .hint{
+      color:var(--muted);
+      font-size:0.9rem;
+    }
+
+    /* Mensajes de resultado */
+    .result{
+      margin-top:14px;
+      min-height:36px;
+      display:flex;
+      align-items:center;
+    }
+    .result .ok{
+      color:var(--success);
+      font-weight:700;
+      font-size:1.2rem;
+    }
+    .result .ok.big{
+      font-size:1.6rem;
+      font-weight:900;
+      color: #b8ffe1;
+      margin-bottom:6px;
+    }
+    .result .msg{
+      color:#e6f9ef;
+      margin-top:8px;
+      font-size:0.98rem;
+    }
+    .result .error{
+      color:var(--danger);
+      font-weight:700;
+      animation: shake .35s;
+    }
+
+    @keyframes shake{
+      0%{transform:translateX(0)}
+      25%{transform:translateX(-6px)}
+      50%{transform:translateX(6px)}
+      75%{transform:translateX(-4px)}
+      100%{transform:translateX(0)}
+    }
+
+    /* Responsive */
+    @media (max-width:880px){
+      .content{grid-template-columns: 1fr; }
+      .logo{width:48px;height:48px;font-size:18px}
+    }
+  </style>
 </head>
 <body>
-<div class="card">
-  <h2>Archivos de la expedición</h2>
-  <p>Al parecer, alguien intentó dejar un registro digital con pistas. El texto antiguo fue modificado y cifrado para despistar.</p>
+  <div class="container" role="main">
+    <header>
+      <div class="logo">AE</div>
+      <div>
+        <h1>Archivos de la Expedición</h1>
+        <div class="meta">Registro digital — archivos y transmisiones de campo</div>
+      </div>
+    </header>
 
-  <p>En algunos pasajes aparece una secuencia: <code>O B F H R</code></p>
-  <p>Si no tenéis idea, probad a usar la misma técnica que usan los exploradores para 'girar' palabras.</p>
+    <div class="content">
+      <!-- Panel izquierdo: texto de "archivo" / relleno -->
+      <section class="panel archivo" aria-labelledby="archivo-title">
+        <h2 id="archivo-title" style="margin-top:0;color:#dbeefd;font-size:1.05rem">Registro: Informe preliminar</h2>
+        <p class="muted">Fecha: 12 de junio — Equipo Alfa</p>
+        <p>Se conserva aquí un extracto de las observaciones recopiladas durante la primera salida. Los dispositivos de campo registraron fenómenos acústicos cerca del claro sur; por razones de seguridad sólo se incluyeron metadatos y notas sintéticas en este archivo público.</p>
+        <p>El material restante permanece clasificado en capas superiores y sólo puede accederse mediante la clave de la expedición. Los investigadores recomiendan discreción: algunas transmisiones contienen coordenadas y recomendaciones para la aproximación segura al perímetro.</p>
+        <p class="muted">— Fin del extracto</p>
+      </section>
 
-  <p>Introduce la <strong>palabra clave</strong> que encontraste en el diario para desbloquear la siguiente transmisión:</p>
-  <input id="pwd" placeholder="introduce palabra clave aquí">
-  <button id="check">Comprobar</button>
+      <!-- Panel derecho: formulario de desbloqueo -->
+      <aside class="panel" aria-labelledby="desbloqueo-title">
+        <h3 id="desbloqueo-title" style="margin-top:0;color:#dbeefd">Desbloquear transmisión</h3>
 
-  <div id="ok" class="secret">
-    <h3>Transmisión desbloqueada</h3>
-    <p>Buen trabajo. Id al lugar donde todos jugáis al balón. Allí, alguien dejó una señal moderna con información importante.</p>
-    <p>Pista extra: el mensaje moderno necesita ser <em>descargado</em> con vuestro teléfono.</p>
+        <form id="unlockForm" autocomplete="off" aria-describedby="hint">
+          <label for="password">Introduce la palabra clave que encontraste en el diario</label>
+          <input id="password" type="password" name="password" placeholder="palabra clave" aria-label="Palabra clave" required autofocus />
+          <div class="actions">
+            <button type="submit" class="primary">Desbloquear</button>
+            <div class="hint" id="hint">La contraseña es sensible únicamente a su contenido (acepta mayúsc/minúsc)</div>
+          </div>
+
+          <div class="result" id="result" aria-live="polite"></div>
+        </form>
+      </aside>
+    </div>
   </div>
 
-  <p style="margin-top:14px;font-size:13px;color:#666">(Sugerencia: la secuencia OBFHR es ROT13 de 'BOSUE' — un ejemplo de cifrado rot13)</p>
-</div>
+  <script>
+    (function(){
+      const SECRET = 'BOSQUE';
+      const form = document.getElementById('unlockForm');
+      const input = document.getElementById('password');
+      const result = document.getElementById('result');
 
-<script>
-document.getElementById('check').addEventListener('click', function(){
-  var v = document.getElementById('pwd').value.trim().toUpperCase();
-  if(v === 'BOSQUE'){
-    document.getElementById('ok').style.display='block';
-  } else {
-    alert('Contraseña incorrecta. ¡Tienes la pañoleta mal hecha!');
-  }
-});
-</script>
+      function showSuccess() {
+        result.innerHTML = `
+          <div>
+            <div class="ok big">Transmisión desbloqueada</div>
+            <div class="msg">Buen trabajo. Id al lugar donde nuestras voces saludan al amanecer y despiden a las estrellas. Allí, alguien dejó una señal moderna con información importante.</div>
+          </div>
+        `;
+        input.value = '';
+        input.disabled = true;
+        form.querySelector('button[type="submit"]').disabled = true;
+      }
+
+      function showError() {
+        result.innerHTML = '<div class="error">llevas mal hecha la pañoleta</div>';
+        // pequeña vibración visual del input
+        input.classList.remove('shake'); // reset
+        void input.offsetWidth; // reflow
+        input.classList.add('shake');
+      }
+
+      // añadir clase shake para animación si hace falta
+      const style = document.createElement('style');
+      style.textContent = `.shake{ animation: shake .35s }`;
+      document.head.appendChild(style);
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const attempt = (input.value || '').trim().toUpperCase();
+        if(attempt === SECRET.toUpperCase()){
+          showSuccess();
+        } else {
+          showError();
+        }
+      });
+
+      // permite Enter en campo y limpiar mensajes al tipear
+      input.addEventListener('input', () => { result.textContent = ''; });
+    })();
+  </script>
 </body>
 </html>
