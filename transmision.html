@@ -92,7 +92,6 @@
         <p class="mono">pnabn</p>
 
         <p>Tenéis que conseguir sacar el código para poder acceder. <strong>Cifrado: cesar 13</strong></p>
-        <p class="muted">(Consejo: aplica ROT13 a la secuencia para recuperar la palabra original)</p>
       </section>
 
       <aside class="right" aria-label="desbloqueo">
@@ -117,10 +116,9 @@
       const input = document.getElementById('pwd');
       const result = document.getElementById('result');
 
-      // animación decodificando
       function decodingAnimation(callback){
         result.innerHTML = '<div class="msg">Decodificando...</div>';
-        setTimeout(callback, 1200); // 1.2s de "decodificando"
+        setTimeout(callback, 1200);
       }
 
       function success(){
